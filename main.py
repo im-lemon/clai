@@ -22,7 +22,7 @@ while True:
         request = requests.post(url, headers=headers, json=payload)
         data = request.json()
         ai_reply = data["choices"][0]["message"]["content"]
-        if "choices" in data:
+        if "choices" not in data:
             print(Fore.RED + f"[ERROR] Choices was not found in request, here's some error info: {data}" + Style.RESET_ALL)
         print(f"AI: {ai_reply}")
         messages.append({"role": "assistant", "content": ai_reply})
